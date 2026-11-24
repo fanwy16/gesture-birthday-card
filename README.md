@@ -4,6 +4,10 @@ An agent skill for making a birthday card web page you play with your fingertips
 
 一个 agent skill：做一张用指尖玩的生日贺卡网页。拇指碰一下某根手指，卡片喊出一个昵称，再用一种语言说生日快乐。每碰一根，卡片就从你的风格（persona）走向对方的风格（他的网站）；最后一根放大结局：世界地图和一页生日特刊。没有摄像头也能点按或按 1–8。
 
+![The example card: opening, the first three fingers, all seven, the paper stage, the world map finale and the birthday newspaper](media/preview.jpg)
+
+▶ **[Try a live card](https://wenyufan.vercel.app/playground/birthday-card/index.html)** (webcam, or press 1–8 / 摄像头，或按 1–8)
+
 ## Install
 
 Works with any agent that reads `SKILL.md` skills (Claude Code, Codex and others). Put this folder where your agent loads skills, for example with Claude Code:
