@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN" data-phase="her">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Happy Birthday, CJINN</title>
+    <meta name="description" content="A gesture birthday card: eight nicknames, seven languages." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%F0%9F%8E%82%3C/text%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+KR:wght@400;500&family=Noto+Serif+SC:wght@400;500&display=swap"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <canvas id="confetti" aria-hidden="true"></canvas>
+
+    <div class="site">
+      <div class="screen">
+      <header class="masthead">
+        <a class="logo" href="#" aria-label="Wenyu Fan × CJINN">
+          <!-- Wendy's mark from her site: a vertical "W F" that unfolds to WENYU FAN on hover -->
+          <span class="logo-her" aria-hidden="true"
+            ><span class="keep">W</span><span>E</span><span>N</span><span>Y</span><span>U</span><span class="gap"></span><span class="keep">F</span><span>A</span><span>N</span></span
+          >
+          <span class="logo-x">×</span>
+          <span class="logo-his">CJINN<b>.</b></span>
+        </a>
+
+        <div class="journey" aria-label="Progress">
+          <span class="journey-end her">Wendy</span>
+          <span class="journey-bar"><span id="journey-fill"></span></span>
+          <span class="journey-end his">CJINN</span>
+          <span class="journey-count" id="journey-count">0 / 8</span>
+          <button type="button" class="restart" id="restart" title="重新开始 · Start over">↺</button>
+          <button type="button" class="restart" id="edit-fingers" title="编辑手指 · Edit fingers" aria-label="编辑手指 · Edit fingers">✎</button>
+          <button type="button" class="restart" id="toggle-board" title="隐藏 / 显示手指栏 (S)" aria-pressed="false">
+            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true">
+              <rect x="1.5" y="2.5" width="13" height="11" rx="2" fill="none" stroke="currentColor" stroke-width="1.3" />
+              <line x1="10" y1="2.5" x2="10" y2="13.5" stroke="currentColor" stroke-width="1.3" />
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="topline" aria-hidden="true">
+        <span>BIRTHDAY EDITION <i>·</i> 生日特刊</span>
+        <span>N° 01 <i>·</i> 2026</span>
+      </div>
+
+      <main>
+        <section class="hero">
+          <p class="eyebrow">For CJINN · from Wendy</p>
+          <h1>
+            <span class="h-her">Hi, CJINN.</span>
+            <span class="h-his">Happy Birthday<b>.</b></span>
+          </h1>
+        </section>
+
+        <section class="workspace">
+          <div class="stage-col">
+            <div id="stage" class="stage">
+              <video id="video" muted playsinline aria-label="Mirrored camera preview"></video>
+              <div id="markers" class="markers" aria-hidden="true"></div>
+
+              <div id="placeholder" class="placeholder">
+                <div class="placeholder-art" id="cat-placeholder" aria-hidden="true"></div>
+                <button id="start" class="cta" type="button">打开摄像头 · Open the card</button>
+                <p id="status" class="status" role="status" aria-live="polite">
+                  摄像头画面只留在这台设备上 · Nothing leaves this device
+                </p>
+              </div>
+
+              <div id="caption" class="caption" aria-live="assertive">
+                <div class="cap-her">
+                  <p class="cap-name" id="cap-name"></p>
+                </div>
+                <div class="cap-his">
+                  <p class="cap-greet" id="cap-greet"></p>
+                </div>
+              </div>
+
+              <div id="buddy" class="buddy" aria-hidden="true"></div>
+              <button id="stop" class="stop" type="button" hidden>Stop camera</button>
+            </div>
+
+            <nav class="lang-row" id="lang-row" aria-label="Languages"></nav>
+
+            <section class="passport" aria-label="Passport">
+              <ol id="passport-cells"></ol>
+            </section>
+          </div>
+
+          <section class="board" aria-label="Eight fingertips">
+            <div class="hand">
+              <p class="hand-title">LEFT HAND <span>左手</span></p>
+              <ol id="hand-left"></ol>
+            </div>
+            <div class="hand">
+              <p class="hand-title">RIGHT HAND <span>右手</span></p>
+              <ol id="hand-right"></ol>
+            </div>
+          </section>
+        </section>
+      </main>
+      </div>
+
+      <footer>
+        <span>Adapted from <a href="https://github.com/cocozhuk/Taptalk---talk-through-your-fingers-">TapTalk</a> — talk through your fingers</span>
+        <span>Made with ♡ by Wendy, for <a href="https://cjinn.org/">CJINN</a></span>
+      </footer>
+    </div>
+
+    <!-- Finale: a dotted world map, with flags from everywhere flying home -->
+    <div id="world" class="world" hidden aria-hidden="true">
+      <div class="world-inner">
+        <p class="world-title">Happy birthday, CJINN<b>.</b></p>
+        <div class="world-map" id="world-map">
+          <canvas id="world-canvas"></canvas>
+          <span class="world-cat" id="world-cat"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- The birthday edition: the last page, a one-sheet newspaper -->
+    <div id="edition" class="edition" hidden role="dialog" aria-modal="true" aria-labelledby="edition-title">
+      <div class="edition-sheet" tabindex="-1">
+        <div class="edition-topline">
+          <span>BIRTHDAY EDITION <i>·</i> 生日特刊</span>
+          <button type="button" class="edition-x" id="edition-close" aria-label="Close">×</button>
+        </div>
+        <div class="edition-scroll">
+          <header class="edition-masthead">
+            <p class="edition-logo">CJINN<b>.</b></p>
+            <div class="edition-rule"><span>N° 01</span><span>2026</span><span>FROM WENDY</span></div>
+            <p class="edition-label">今日头条 · TODAY’S HEADLINE</p>
+            <h2 id="edition-title">Happy Birthday<b>.</b></h2>
+            <p class="edition-names" id="edition-names"></p>
+          </header>
+          <ol class="edition-list" id="edition-list"></ol>
+          <div class="edition-letter" id="edition-letter"></div>
+          <div class="edition-signature">
+            <span class="edition-cat" id="edition-cat" aria-hidden="true"></span>
+            <span>— Wendy</span>
+          </div>
+        </div>
+        <div class="edition-bottom">
+          <span>Love, Wendy</span>
+          <button type="button" id="edition-restart">重新开始 <span>↺</span></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Finger editor: change each finger's nickname, greeting and voice -->
+    <dialog id="editor" class="editor" aria-labelledby="editor-title">
+      <form id="editor-form">
+        <div class="editor-head">
+          <h2 id="editor-title">编辑手指 · Edit fingers</h2>
+          <button type="button" class="editor-x" id="editor-x" aria-label="Close">×</button>
+        </div>
+        <p class="editor-note" id="editor-note">
+          改过的文字用浏览器的声音读，没改的仍用录好的声音。保存在这个浏览器里；发给别人请用“复制链接”。★ 是最后一根手指，会把所有语言轮一遍。
+        </p>
+        <ol class="editor-rows" id="editor-rows"></ol>
+        <div class="editor-foot">
+          <button type="button" id="editor-reset">恢复默认 · Reset</button>
+          <button type="button" id="editor-link">复制链接 · Copy link</button>
+          <button type="submit" class="primary">保存 · Save</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
